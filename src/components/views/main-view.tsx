@@ -1,27 +1,29 @@
 import React from 'react';
 import { useState } from 'react';
-
+import ReactDOM from "react-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import { Subtasks } from '../subtasks';
+import { Timer } from "../timer";
 
 export function MainView() {
 
-const [timers, setTimers] = useState([15]);
+const [tasks, setTasks] = useState(["Sub Task"]);
 
- function addTimer() {
+ function addTask() {
 
-   setTimers([...timers, 15])
+   setTasks([...tasks, "Sub Task"])
 
  }
     return(
         <Container>
 
             <div className="App">
-              <Button variant="primary" onClick={addTimer}>Add New Subtask</Button>
-              <br />
-                {timers.map((item, i) => ( <Subtasks remainingTime={item} /> ))}
+              <Timer />
+              <Button variant="primary" onClick={addTask}>Add New Subtask</Button>
+
+                {tasks.map((item, i) => ( <Subtasks text={item} /> ))}
             </div>
 
         </Container>

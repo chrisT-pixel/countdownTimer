@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { InputChange } from './inputchange';
+//import { InputChange } from './inputchange';
 
 
 type Props = {
@@ -37,7 +37,7 @@ export function Subtasks() {
         </Col>
 
         <Col>
-          <InputChange />
+          {/*<InputChange />*/}
         </Col>
 
         <Col>

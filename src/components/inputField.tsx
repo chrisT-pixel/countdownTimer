@@ -37,7 +37,7 @@ const InputField = ({ task, time, setTime, setTask, handleAdd}: Props) => {
         onChange={
           (e)=>setTime(e.target.valueAsNumber)
         }
-        placeholder="Enter time in seconds" 
+        placeholder="Enter time in minutes" 
       className="input__box" />
       <button className="input_submit" type="submit">
         Go

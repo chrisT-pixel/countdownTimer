@@ -1,6 +1,6 @@
 import React from 'react';
 import { Task } from "../model";
-import { FaEdit, FaTrashAlt, FaCheck } from 'react-icons/fa';
+import { FaEdit, FaTrashAlt, FaCheck, FaPlay } from 'react-icons/fa';
 import TaskList from './TaskList';
 //import { Timer } from "./timer";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
@@ -9,12 +9,14 @@ type Props = {
     task: Task;
     tasks: Task[],
     setTasks: React.Dispatch<React.SetStateAction<Task[]>>; 
+    //setActive: React.Dispatch<React.SetStateAction<Task[]>>; 
     //duration: number;
     remainingTime: number;
+    isActive: boolean;
     
 }
 
-const SingleTask = ({ task, tasks, setTasks  }: Props) => {
+const SingleTask = ({ task, tasks, setTasks, setActive }: Props) => {
 
     const handleDone = (id: number) => {
         setTasks(tasks.map((task)=>
@@ -25,6 +27,20 @@ const SingleTask = ({ task, tasks, setTasks  }: Props) => {
 
     const handleDelete = (id: number) => {
         setTasks(tasks.filter((task)=>task.id != id));
+        
+    };
+
+    const handleActive = (id: number) => {
+       
+       // setTasks(tasks.map((task)=>
+       //      task.id !== id? {...task, isDone: !task.isDone}:task,
+       //     )
+      //  );
+
+        setTasks(tasks.map((task)=>
+            task.id === id? {...task, isActive: !task.isActive}:task
+         )
+     );
         
     };
 
@@ -52,29 +68,43 @@ const SingleTask = ({ task, tasks, setTasks  }: Props) => {
             
             {task.isDone ? (
                 <div>
-                    <s className="todos__single--text"><b>Task Name:</b> {task.task} <b>Time in Seconds:</b> {task.time}</s>
+                    <s className="todos__single--text"><b>Task Name:</b> {task.task} <b>Time in minutes allocated:</b> {task.time}</s>
                 </div>
             ) : (
 
                 <div>
-                    <span className="todos__single--text"><b>Task Name:</b> {task.task} <b>Time in Seconds:</b> {task.time}</span>
+                    <span className="todos__single--text"><b>Task Name:</b> {task.task} <b>Time in minutes allocated:</b> {task.time}</span>
+                   
+                </div>
+            )}
 
+            {task.isActive ? (
+                <div>
+                    
                     <div className="timer-wrapper">
                         <CountdownCircleTimer
-                        duration={task.time}
+                        duration={task.time * 60}
                         isPlaying={true}
                         colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
                         colorsTime={[10, 6, 3, 0]}
                         onComplete={() => ({ shouldRepeat: false, delay: 1 })}
                         >
                             {renderTime}
+
                         </CountdownCircleTimer>
                         
                         
                     </div>
+                </div>
+            ) : (
+
+                <div>
+                    <span className="todos__single--text">Activate task timer to begin countdown</span>
+
+                    
                    
                 </div>
-            )}
+            )}  
            
             <div>
                
@@ -83,6 +113,9 @@ const SingleTask = ({ task, tasks, setTasks  }: Props) => {
                 </span>
                 <span className="icon" onClick={()=>handleDone(task.id)}>
                     <FaCheck />
+                </span>
+                <span className="icon" onClick={()=>handleActive(task.id)}>
+                    <FaPlay />
                 </span>
             </div>
         </form>

@@ -59,10 +59,8 @@
           ]
     },
     "rules": {
-        "no-console": "error",
         "no-duplicate-imports": "warn",
         "no-alert": "error",
-        "no-magic-numbers": "warn",
         "react/jsx-uses-react": "error",
         "react/jsx-uses-vars": "error"
     }

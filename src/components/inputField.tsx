@@ -40,7 +40,7 @@ const InputField = ({ task, time, setTime, setTask, handleAdd}: Props) => {
         placeholder="Enter time in minutes" 
       className="input__box" />
       <button className="input_submit" type="submit">
-        Go
+        Create new task
       </button>
     </form>
   );

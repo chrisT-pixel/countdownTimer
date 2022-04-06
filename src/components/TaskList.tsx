@@ -4,32 +4,30 @@ import SingleTask from "./SingleTask";
 
 interface Props{
     tasks:Task[];
-    //time: number;
     setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
-    setActive: React.Dispatch<React.SetStateAction<Task[]>>;
     remainingTime: number;
    
 }
 
 
-const TaskList: React.FC<Props> = ({ tasks, setTasks, setActive, remainingTime }:Props) => {
+const TaskList: React.FC<Props> = ({ tasks, setTasks, remainingTime }:Props) => {
 
     return <div className="tasks">
-        {tasks.map((task) => (
-            
-            <SingleTask
-                task={task} 
-                key={task.id}
-                //time={tasks.time}
-                tasks={tasks}
-                setTasks={setTasks}
-                setActive={setActive}
-                remainingTime={remainingTime}
-            />
 
-        ))}
+                {tasks.map((task) => (
+                    
+                    <SingleTask
+                        task={task}
+                        key={task.id}
+                        tasks={tasks}
+                        setTasks={setTasks}
+                        remainingTime={remainingTime} 
+                        isActive={false}            
+                    />
 
-    </div>
+                ))}
+
+             </div>
 
 };
 

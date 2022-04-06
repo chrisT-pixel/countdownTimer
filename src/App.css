@@ -1,5 +1,23 @@
 .App {
-  text-align: center;
+  
+}
+
+.todos__single{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.activeTask{
+  background: #ff8b8e;
+  padding: 10px;
+}
+
+.icon{
+  margin-right: 10px;
+}
+
+.todos__single--text_alert{
+  color: rebeccapurple;
 }
 
 .App-logo {

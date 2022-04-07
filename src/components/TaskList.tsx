@@ -6,6 +6,7 @@ interface Props{
     tasks:Task[];
     setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
     remainingTime: number;
+    //setTime: React.Dispatch<React.SetStateAction<number>>;
    
 }
 
@@ -20,6 +21,7 @@ const TaskList: React.FC<Props> = ({ tasks, setTasks, remainingTime }:Props) => 
                         task={task}
                         key={task.id}
                         tasks={tasks}
+                        //setTime={setTime}
                         setTasks={setTasks}
                         remainingTime={remainingTime} 
                         isActive={false}            

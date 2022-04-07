@@ -15,13 +15,19 @@ const App: React.FC = () => {
   const [task, setTask] = useState<string>("");
   const [time, setTime] = useState<number>(0);
   const [tasks, setTasks] = useState<Task[]>([]);
+  //const [remainingTime, setRemainingTime] = useState<number>(0);
+
+  /*type Props = {
+    remainingTime: number
+  }*/
+  
 
 
   const handleAdd= (e: React.FormEvent) => {
     e.preventDefault();
 
     if(task){
-      setTasks([...tasks, {id: Date.now(), task:task, time:time, isDone:false, isActive:false}]);
+      setTasks([...tasks, {id: Date.now(), task:task, time:time, isDone:false, isActive:false }]);
       setTask("");
       setTime(0);
 
@@ -38,7 +44,7 @@ const App: React.FC = () => {
 
         <span className="heading">Subtask Timer</span>
         <InputField task={task} setTask={setTask} time={time} setTime={setTime} handleAdd={handleAdd}/>
-        <TaskList tasks={tasks} setTasks={setTasks} remainingTime={0} />
+        <TaskList tasks={tasks} setTasks={setTasks} setTime={setTime} />
        
       </Container>
       

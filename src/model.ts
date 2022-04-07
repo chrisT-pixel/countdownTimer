@@ -4,4 +4,5 @@ export interface Task{
     time: number;
     isDone: boolean;
     isActive: boolean;
+    //remainingTime: number;
 }

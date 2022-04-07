@@ -1,20 +1,34 @@
 import React from 'react';
 import { Task } from "../model";
-import { FaEdit, FaTrashAlt, FaCheck, FaPlay } from 'react-icons/fa';
+import { FaEdit, FaTrashAlt, FaCheck, FaPlay, FaPause } from 'react-icons/fa';
 import TaskList from './TaskList';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import { BroadcastChannel } from 'worker_threads';
 
 type Props = {
     task: Task;
     tasks: Task[],
     setTasks: React.Dispatch<React.SetStateAction<Task[]>>; 
-    //duration: number;
     remainingTime: number;
     isActive: boolean;
+    //setTime: React.Dispatch<React.SetStateAction<number>>; 
+    
     
 }
 
-const SingleTask = ({ task, tasks, setTasks }: Props) => {
+const SingleTask = ({ task, tasks, setTasks, remainingTime}: Props) => {
+
+    //const handlePause = (id: number, remainingTime: number) => {
+       // implement pause feature here
+      // setTime(task.time = task.remainingTime);
+  
+    //};
+
+    const handlePause = (id: number) => {
+        // implement pause feature here
+       // setTime(task.time = task.remainingTime);
+   
+     };
 
     const handleDone = (id: number) => {
         setTasks(tasks.map((task)=>
@@ -45,10 +59,13 @@ const SingleTask = ({ task, tasks, setTasks }: Props) => {
         
     };
 
+    
+
     const renderTime = ({ remainingTime }: Props) => {
         if (remainingTime === 0) {
           return <div className="timer">Time up...</div>;
         }
+         
       
         return (
       
@@ -62,7 +79,17 @@ const SingleTask = ({ task, tasks, setTasks }: Props) => {
         );
       };
 
-    
+      const calcRemainingTime = ({ remainingTime }: Props) => {
+        if (remainingTime > 0) {
+          task.time = remainingTime;
+        }
+
+        console.log(remainingTime);
+
+        return calcRemainingTime;
+
+      };
+
     
     return(
        
@@ -78,6 +105,7 @@ const SingleTask = ({ task, tasks, setTasks }: Props) => {
 
                 <div>
                     <span className="todos__single--text"><b>Task Name:</b> {task.task} <br /><b>Total time in minutes allocated:</b> {task.time}:00</span>
+                   
                     <br />
                 </div>
             )}
@@ -89,12 +117,15 @@ const SingleTask = ({ task, tasks, setTasks }: Props) => {
                         
                         <CountdownCircleTimer
                         duration={task.time * 60}
+                        //duration={remainingTime}
                         isPlaying={true}
                         colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
                         colorsTime={[10, 6, 3, 0]}
                         onComplete={() => ({ shouldRepeat: false, delay: 1 })}
                         >
                             {renderTime}
+
+                          
 
                         </CountdownCircleTimer>
                         
@@ -104,7 +135,8 @@ const SingleTask = ({ task, tasks, setTasks }: Props) => {
             ) : (
 
                 <div>
-                    <span className="todos__single--text_alert">Activate task timer to begin countdown</span>
+                    <span className="todos__single--text_alert">Pause or delete any running tasks and press play to begin countdown</span>
+                   
                 </div>
             )}  
            
@@ -116,9 +148,22 @@ const SingleTask = ({ task, tasks, setTasks }: Props) => {
                 <span className="icon" onClick={()=>handleDone(task.id)}>
                     <FaCheck />
                 </span>
-                <span className="icon" onClick={()=>handleActive(task.id)}>
-                    <FaPlay />
-                </span>
+
+                {task.isActive ? (
+
+                    /*<span className="icon" onClick={()=>handlePause(task.id, task.remainingTime)}>*/
+                    <span className="icon" onClick={()=>handlePause(task.id)}>
+                        <FaPause />
+                    </span>
+                 
+                 ) : (
+
+                    <span className="icon" onClick={()=>handleActive(task.id)}>
+                        <FaPlay />
+                    </span>
+
+                 )}
+            
             </div>
         </form>
     )

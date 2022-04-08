@@ -15,14 +15,8 @@ const App: React.FC = () => {
   const [task, setTask] = useState<string>("");
   const [time, setTime] = useState<number>(0);
   const [tasks, setTasks] = useState<Task[]>([]);
-  //const [remainingTime, setRemainingTime] = useState<number>(0);
-
-  /*type Props = {
-    remainingTime: number
-  }*/
   
-
-
+  
   const handleAdd= (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -44,7 +38,7 @@ const App: React.FC = () => {
 
         <span className="heading">Subtask Timer</span>
         <InputField task={task} setTask={setTask} time={time} setTime={setTime} handleAdd={handleAdd}/>
-        <TaskList tasks={tasks} setTasks={setTasks} setTime={setTime} />
+        <TaskList tasks={tasks} setTasks={setTasks} />
        
       </Container>
       

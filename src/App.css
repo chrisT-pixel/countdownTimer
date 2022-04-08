@@ -7,9 +7,13 @@
   margin-bottom: 15px;
 }
 
-.activeTask{
+.task-active{
   background: #ff8b8e;
   padding: 10px;
+}
+
+.task-inactive{
+  display: none;
 }
 
 .icon{

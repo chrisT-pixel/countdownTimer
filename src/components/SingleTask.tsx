@@ -10,23 +10,16 @@ type Props = {
     tasks: Task[],
     setTasks: React.Dispatch<React.SetStateAction<Task[]>>; 
     remainingTime: number;
-    isActive: boolean;
-    //setTime: React.Dispatch<React.SetStateAction<number>>; 
-    
+    isActive: boolean; 
     
 }
 
 const SingleTask = ({ task, tasks, setTasks, remainingTime}: Props) => {
 
-    //const handlePause = (id: number, remainingTime: number) => {
-       // implement pause feature here
-      // setTime(task.time = task.remainingTime);
-  
-    //};
 
     const handlePause = (id: number) => {
         // implement pause feature here
-       // setTime(task.time = task.remainingTime);
+       
    
      };
 
@@ -59,9 +52,8 @@ const SingleTask = ({ task, tasks, setTasks, remainingTime}: Props) => {
         
     };
 
-    
 
-    const renderTime = ({ remainingTime }: Props) => {
+     const renderTime = ({ remainingTime }: Props) => {
         if (remainingTime === 0) {
           return <div className="timer">Time up...</div>;
         }
@@ -77,17 +69,6 @@ const SingleTask = ({ task, tasks, setTasks, remainingTime}: Props) => {
       
       
         );
-      };
-
-      const calcRemainingTime = ({ remainingTime }: Props) => {
-        if (remainingTime > 0) {
-          task.time = remainingTime;
-        }
-
-        console.log(remainingTime);
-
-        return calcRemainingTime;
-
       };
 
     
@@ -110,27 +91,34 @@ const SingleTask = ({ task, tasks, setTasks, remainingTime}: Props) => {
                 </div>
             )}
 
-            {task.isActive ? (
-                <div className="activeTask">
+        <div className={task.isActive ? 'task-active' : 'task-inactive'}>
+      
                     
-                    <div className="timer-wrapper">
-                        
-                        <CountdownCircleTimer
-                        duration={task.time * 60}
-                        //duration={remainingTime}
-                        isPlaying={true}
-                        colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-                        colorsTime={[10, 6, 3, 0]}
-                        onComplete={() => ({ shouldRepeat: false, delay: 1 })}
-                        >
-                            {renderTime}
+            <div className="timer-wrapper">
+          
+                <CountdownCircleTimer
+                    duration={task.time * 60}
+                    isPlaying={task.isActive}
+                    colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+                    colorsTime={[10, 6, 3, 0]}
+                    onComplete={() => ({ shouldRepeat: false, delay: 1 })}
+                    >
+                        {renderTime}
 
-                          
+                </CountdownCircleTimer>
+          
+            </div>
+        
+        </div>
+      
 
-                        </CountdownCircleTimer>
-                        
-                        
-                    </div>
+
+
+            {task.isActive ? (
+                <div>
+
+                    <span className="todos__single--text_alert">task timer is running</span>
+                   
                 </div>
             ) : (
 
@@ -151,7 +139,6 @@ const SingleTask = ({ task, tasks, setTasks, remainingTime}: Props) => {
 
                 {task.isActive ? (
 
-                    /*<span className="icon" onClick={()=>handlePause(task.id, task.remainingTime)}>*/
                     <span className="icon" onClick={()=>handlePause(task.id)}>
                         <FaPause />
                     </span>

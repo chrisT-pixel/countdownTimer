@@ -1,15 +1,58 @@
-.App {
-  
+.heading{
+  margin-top: 20px!important;
+  margin-bottom: 20px!important;
+  display: inline-block;
+  color: #005C53;
+  animation: fadeIn linear 7s;
+  -webkit-animation: fadeIn linear 7s;
+  -moz-animation: fadeIn linear 7s;
+  -o-animation: fadeIn linear 7s;
+  -ms-animation: fadeIn linear 7s;
+}
+
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
 }
 
 .todos__single{
   margin-top: 15px;
   margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #005C53;
 }
 
 .task-active{
-  background: #ff8b8e;
+  background: #D6D58E;
   padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  animation: fadeIn linear 2s;
+  -webkit-animation: fadeIn linear 2s;
+  -moz-animation: fadeIn linear 2s;
+  -o-animation: fadeIn linear 2s;
+  -ms-animation: fadeIn linear 2s;
 }
 
 .task-inactive{
@@ -19,43 +62,29 @@
 .icon{
   margin-right: 10px;
   cursor: pointer;
+  color: #005C53;
+  transition: all 0.25s ease-in;
+  margin-bottom: 10px;
+}
+
+.icon:hover{
+  color: #9FC131;
 }
 
 .todos__single--text_alert{
-  color: rebeccapurple;
+  color: #042940;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.input_submit{
+  background-color: #005C53;
+  color: #FFF;
+  border: 2px solid #005C53;
+  transition: all 0.25s ease-in;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.input_submit:hover{
+  background-color: #9FC131;
+  border: 2px solid #9FC131;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

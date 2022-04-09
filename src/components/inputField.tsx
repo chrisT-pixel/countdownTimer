@@ -33,6 +33,7 @@ const InputField = ({ task, time, setTime, setTask, handleAdd}: Props) => {
         <input 
         ref={inputRef}
         type="number" 
+        min="1"
         value={time}
         onChange={
           (e)=>setTime(e.target.valueAsNumber)

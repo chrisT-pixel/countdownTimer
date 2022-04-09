@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from "react-dom";
 import { Task } from "../model";
 import { FaEdit, FaTrashAlt, FaCheck, FaPlay, FaPause } from 'react-icons/fa';
 import TaskList from './TaskList';
@@ -14,14 +15,14 @@ type Props = {
     
 }
 
-const SingleTask = ({ task, tasks, setTasks, remainingTime}: Props) => {
+const SingleTask = ({ task, tasks, setTasks}: Props) => {
 
 
     const handlePause = (id: number) => {
+       
         // implement pause feature here
        
-   
-     };
+    };
 
     const handleDone = (id: number) => {
         setTasks(tasks.map((task)=>
@@ -71,6 +72,10 @@ const SingleTask = ({ task, tasks, setTasks, remainingTime}: Props) => {
         );
       };
 
+    const timerDuration = task.time * 60;
+    const timerDurationTwoThird = task.time * 40;
+    const timerDurationOneThird = task.time * 20;
+
     
     return(
        
@@ -97,10 +102,10 @@ const SingleTask = ({ task, tasks, setTasks, remainingTime}: Props) => {
             <div className="timer-wrapper">
           
                 <CountdownCircleTimer
-                    duration={task.time * 60}
+                    duration={timerDuration}
                     isPlaying={task.isActive}
-                    colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-                    colorsTime={[10, 6, 3, 0]}
+                    colors={["#042940", "#005C53", "#9FC131", "#DBF227"]}
+                    colorsTime={[timerDuration, timerDurationTwoThird, timerDurationOneThird, 0]}
                     onComplete={() => ({ shouldRepeat: false, delay: 1 })}
                     >
                         {renderTime}
@@ -117,14 +122,13 @@ const SingleTask = ({ task, tasks, setTasks, remainingTime}: Props) => {
             {task.isActive ? (
                 <div>
 
-                    <span className="todos__single--text_alert">task timer is running</span>
+                   <span className="todos__single--text_alert">Task timer is running. Launching a new task will auto-pause this task</span>
                    
                 </div>
             ) : (
 
                 <div>
-                    <span className="todos__single--text_alert">Pause or delete any running tasks and press play to begin countdown</span>
-                   
+                    <span className="todos__single--text_alert">Press play to begin countdown.</span>
                 </div>
             )}  
            

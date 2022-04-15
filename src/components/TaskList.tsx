@@ -22,7 +22,8 @@ const TaskList: React.FC<Props> = ({ tasks, setTasks, remainingTime }:Props) => 
                         tasks={tasks}
                         setTasks={setTasks}
                         remainingTime={remainingTime} 
-                        isActive={false}            
+                        isActive={false}
+                        isCurrent={false}            
                     />
 
                 ))}

@@ -6,29 +6,22 @@ import TaskList from './TaskList';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { BroadcastChannel } from 'worker_threads';
 
-//const STATUS = {
-//    STARTED: 'Started',
-//    STOPPED: 'Stopped',
-//}
 
 type Props = {
     task: Task;
     tasks: Task[],
     setTasks: React.Dispatch<React.SetStateAction<Task[]>>; 
     remainingTime: number;
-    isActive: boolean; 
+    isActive: boolean;
+    isCurrent: boolean;
     
 }
 
 const SingleTask = ({ task, tasks, setTasks}: Props) => {
 
-    //const [status, setStatus] = React.useState(STATUS.STOPPED)
 
     const handlePause = (id: number) => {
        
-        // implement pause feature here
-
-        //setStatus(STATUS.STOPPED)
         setTasks(tasks.map((task)=>
             task.id === id? {...task, isActive: !task.isActive}:task
             )
@@ -54,7 +47,8 @@ const SingleTask = ({ task, tasks, setTasks}: Props) => {
                 task => {
                     return {
                     ...task,
-                    isActive: task.id === id
+                    isActive: task.id === id,
+                    isCurrent: task.id === id
                     };
                 }
             )
@@ -107,7 +101,7 @@ const SingleTask = ({ task, tasks, setTasks}: Props) => {
                 </div>
             )}
 
-        <div className={task.isActive ? 'task-active' : 'task-inactive'}>
+        <div className={task.isCurrent ? 'task-isCurrent' : 'task-isNotCurrent'}>
       
                     
             <div className="timer-wrapper">
@@ -130,7 +124,7 @@ const SingleTask = ({ task, tasks, setTasks}: Props) => {
 
 
 
-            {task.isActive ? (
+            {task.isCurrent ? (
                 <div>
 
                    <span className="todos__single--text_alert">Task timer is running. Launching a new task will auto-pause this task</span>

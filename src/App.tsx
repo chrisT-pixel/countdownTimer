@@ -23,7 +23,7 @@ const App: React.FC = () => {
     e.preventDefault();
 
     if(task){
-      setTasks([...tasks, {id: Date.now(), task:task, time:time, isDone:false, isActive:false  }]);
+      setTasks([...tasks, {id: Date.now(), task:task, time:time, isDone:false, isActive:false, isCurrent:false  }]);
       setTask("");
       setTime(0);
 

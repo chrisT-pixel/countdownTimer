@@ -41,7 +41,7 @@ const App: React.FC = () => {
           <h1>COMP2035 Subtask Timer System</h1>
         </div>
         <InputField task={task} setTask={setTask} time={time} setTime={setTime} handleAdd={handleAdd}/>
-        <TaskList tasks={tasks} setTasks={setTasks} />
+        <TaskList tasks={tasks} setTasks={setTasks} /*remainingTime={remainingTime}*/ />
        
       </Container>
       

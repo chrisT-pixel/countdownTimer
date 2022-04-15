@@ -6,6 +6,11 @@ import TaskList from './TaskList';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { BroadcastChannel } from 'worker_threads';
 
+//const STATUS = {
+//    STARTED: 'Started',
+//    STOPPED: 'Stopped',
+//}
+
 type Props = {
     task: Task;
     tasks: Task[],
@@ -17,11 +22,17 @@ type Props = {
 
 const SingleTask = ({ task, tasks, setTasks}: Props) => {
 
+    //const [status, setStatus] = React.useState(STATUS.STOPPED)
 
     const handlePause = (id: number) => {
        
         // implement pause feature here
-       
+
+        //setStatus(STATUS.STOPPED)
+        setTasks(tasks.map((task)=>
+            task.id === id? {...task, isActive: !task.isActive}:task
+            )
+        );
     };
 
     const handleDone = (id: number) => {

@@ -1,20 +1,13 @@
 import React from 'react';
-import ReactDOM from "react-dom";
 import { Task } from "../model";
-import { FaEdit, FaTrashAlt, FaCheck, FaPlay, FaPause } from 'react-icons/fa';
-import TaskList from './TaskList';
+import { FaTrashAlt, FaCheck, FaPlay, FaPause } from 'react-icons/fa';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import { BroadcastChannel } from 'worker_threads';
 
 
 type Props = {
     task: Task;
     tasks: Task[],
-    setTasks: React.Dispatch<React.SetStateAction<Task[]>>; 
-    remainingTime: number;
-    isActive: boolean;
-    isCurrent: boolean;
-    
+    setTasks: React.Dispatch<React.SetStateAction<Task[]>>;     
 }
 
 const SingleTask = ({ task, tasks, setTasks}: Props) => {
@@ -59,7 +52,7 @@ const SingleTask = ({ task, tasks, setTasks}: Props) => {
     };
 
 
-     const renderTime = ({ remainingTime }: Props) => {
+     const renderTime = ({ remainingTime }: {remainingTime: number}) => {
         if (remainingTime === 0) {
           return <div className="timer">Time up...</div>;
         }

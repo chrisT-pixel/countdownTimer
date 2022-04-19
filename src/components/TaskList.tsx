@@ -5,12 +5,10 @@ import SingleTask from "./SingleTask";
 interface Props{
     tasks:Task[];
     setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
-    remainingTime: number;
-   
 }
 
 
-const TaskList: React.FC<Props> = ({ tasks, setTasks, remainingTime }:Props) => {
+const TaskList: React.FC<Props> = ({ tasks, setTasks }:Props) => {
 
     return <div className="tasks">
 
@@ -21,9 +19,6 @@ const TaskList: React.FC<Props> = ({ tasks, setTasks, remainingTime }:Props) => 
                         key={task.id}
                         tasks={tasks}
                         setTasks={setTasks}
-                        remainingTime={remainingTime} 
-                        isActive={false}
-                        isCurrent={false}            
                     />
 
                 ))}

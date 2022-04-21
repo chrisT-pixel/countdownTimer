@@ -1,6 +1,6 @@
 import React from 'react';
 import { Task } from "../model";
-import { FaTrashAlt, FaCheck, FaPlay, FaPause } from 'react-icons/fa';
+import { FaTrashAlt, FaCheck, FaPlay, FaPause, FaPlus, FaForward } from 'react-icons/fa';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
 
@@ -17,6 +17,24 @@ const SingleTask = ({ task, tasks, setTasks}: Props) => {
        
         setTasks(tasks.map((task)=>
             task.id === id? {...task, isActive: !task.isActive}:task
+            )
+        );
+    };
+
+    // adds to the current timer by a set amount of time (1 minute)
+    const handleExtend = (id: number) => {
+       
+        setTasks(tasks.map((task)=>
+            task.id === id? {...task, time : task.time + 1 }:task
+            )
+        );
+    };
+
+    // subtracts from (fast-forwards) the current timer by a set amount of time (1 minute)
+    const handleAdvance = (id: number) => {
+       
+        setTasks(tasks.map((task)=>
+            task.id === id? {...task, time : task.time - 1 }:task
             )
         );
     };
@@ -137,6 +155,12 @@ const SingleTask = ({ task, tasks, setTasks}: Props) => {
                 </span>
                 <span className="icon" onClick={()=>handleDone(task.id)}>
                     <FaCheck />
+                </span>
+                <span className="icon" onClick={()=>handleExtend(task.id)}>
+                    <FaPlus />
+                </span>
+                <span className="icon" onClick={()=>handleAdvance(task.id)}>
+                    <FaForward />
                 </span>
 
                 {task.isActive ? (

@@ -1,0 +1,14 @@
+.DialogHeader {
+  &_tab-nav {
+    &:hover,
+    &:active {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    &.active {
+      cursor: auto;
+      text-decoration: none;
+    }
+  }
+}

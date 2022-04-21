@@ -1,7 +1,4 @@
-import { builtinModules } from "module";
 import React, { useRef } from "react";
-import { Task } from "../model";
-//import "./App.css";
 
 interface Props{
   task: string;

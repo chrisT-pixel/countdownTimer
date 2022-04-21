@@ -9,19 +9,20 @@ type Props = {
   closeDialog: () => void;
   noImportedTasks: boolean;
   updateTasks: () => void;
+  exportTasks: () => void;
 };
 
 /**
  * Dialog's controll buttons.
  */
-export const ControllButtons: FC<Props> = ({ activeTab, noTasks, closeDialog, noImportedTasks, updateTasks }) => {
+export const ControllButtons: FC<Props> = ({ activeTab, noTasks, closeDialog, noImportedTasks, updateTasks, exportTasks }) => {
   const submitButton: JSX.Element = ((): JSX.Element => {
     let button: JSX.Element;
 
     if (activeTab === IMPORT_TAB) {
       button = <Button className="ControllButtons_submit-button" disabled={noImportedTasks} onClick={updateTasks}>{IMPORT_TAB}</Button>;
     } else {
-      button = <Button className="ControllButtons_submit-button" disabled={noTasks}>{EXPORT_TAB}</Button>;
+      button = <Button className="ControllButtons_submit-button" disabled={noTasks} onClick={exportTasks}>{EXPORT_TAB}</Button>;
     }
 
     return button;

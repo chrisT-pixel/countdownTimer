@@ -1,16 +1,19 @@
+import "./dialog-body.scss";
 import { FC, Dispatch, SetStateAction } from "react";
 import { Task } from "../../../models/Task";
 import { EXPORT_TAB, IMPORT_TAB } from "../tabs";
+import { ExportTab } from "./export-tab/export-tab";
 import { ImportTab } from "./import-tab/import-tab";
 
 type Props = {
   activeTab: string;
   clearImportedTasks: () => void;
   noTasks: boolean;
-  setImportedTasks: Dispatch<SetStateAction<Task[]>>
+  setImportedTasks: Dispatch<SetStateAction<Task[]>>;
+  numOfTasks: number;
 };
 
-export const DialogBody: FC<Props> = ({ activeTab, clearImportedTasks, noTasks, setImportedTasks }) => {
+export const DialogBody: FC<Props> = ({ activeTab, clearImportedTasks, noTasks, setImportedTasks, numOfTasks }) => {
   const tab: JSX.Element = (() => {
     if (activeTab === IMPORT_TAB) {
       return (
@@ -23,7 +26,9 @@ export const DialogBody: FC<Props> = ({ activeTab, clearImportedTasks, noTasks, 
     }
     if (activeTab === EXPORT_TAB) {
       return (
-        <div>EXPORT - TODO</div>
+        <ExportTab
+          numOfTasks={numOfTasks}
+        />
       );
     }
     return (
@@ -34,7 +39,7 @@ export const DialogBody: FC<Props> = ({ activeTab, clearImportedTasks, noTasks, 
   })();
 
   return (
-    <div>
+    <div className="DialogBody_view">
       {tab}
     </div>
   );

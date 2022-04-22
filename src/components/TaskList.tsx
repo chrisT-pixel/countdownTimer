@@ -1,5 +1,5 @@
 import React from "react";
-import { Task } from "../model";
+import { Task } from "../models/Task";
 import SingleTask from "./SingleTask";
 
 interface Props{

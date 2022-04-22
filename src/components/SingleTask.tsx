@@ -1,8 +1,7 @@
 import React from 'react';
-import { Task } from "../model";
 import { FaTrashAlt, FaCheck, FaPlay, FaPause, FaPlus, FaForward } from 'react-icons/fa';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-
+import { Task } from '../models/Task';
 
 type Props = {
     task: Task;
@@ -13,7 +12,7 @@ type Props = {
 const SingleTask = ({ task, tasks, setTasks}: Props) => {
 
 
-    const handlePause = (id: number) => {
+    const handlePause = (id: string) => {
        
         setTasks(tasks.map((task)=>
             task.id === id? {...task, isActive: !task.isActive}:task
@@ -22,7 +21,7 @@ const SingleTask = ({ task, tasks, setTasks}: Props) => {
     };
 
     // adds to the current timer by a set amount of time (1 minute)
-    const handleExtend = (id: number) => {
+    const handleExtend = (id: string) => {
        
         setTasks(tasks.map((task)=>
             task.id === id? {...task, time : task.time + 1 }:task
@@ -31,7 +30,7 @@ const SingleTask = ({ task, tasks, setTasks}: Props) => {
     };
 
     // subtracts from (fast-forwards) the current timer by a set amount of time (1 minute)
-    const handleAdvance = (id: number) => {
+    const handleAdvance = (id: string) => {
        
         setTasks(tasks.map((task)=>
             task.id === id? {...task, time : task.time - 1 }:task
@@ -39,19 +38,19 @@ const SingleTask = ({ task, tasks, setTasks}: Props) => {
         );
     };
 
-    const handleDone = (id: number) => {
+    const handleDone = (id: string) => {
         setTasks(tasks.map((task)=>
             task.id === id? {...task, isDone: !task.isDone}:task
             )
         );
     };
 
-    const handleDelete = (id: number) => {
+    const handleDelete = (id: string) => {
         setTasks(tasks.filter((task)=>task.id != id));
         
     };
 
-    const handleActive = (id: number) => {
+    const handleActive = (id: string) => {
 
        setTasks(
             tasks => tasks.map(

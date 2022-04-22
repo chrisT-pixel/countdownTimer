@@ -2,6 +2,8 @@ import React from 'react';
 import { FaTrashAlt, FaCheck, FaPlay, FaPause, FaPlus, FaForward } from 'react-icons/fa';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { Task } from '../models/Task';
+import StarRating from './Rating'
+
 
 type Props = {
     task: Task;
@@ -100,7 +102,7 @@ const SingleTask = ({ task, tasks, setTasks}: Props) => {
             {task.isDone ? (
                 <div>
                     <s className="todos__single--text"><b>Task Name:</b> {task.task} <br /><b>Total time in minutes allocated:</b> {task.time}:00</s>
-                   
+                    <p>Great Job! How efficient did you find this meeting? Please rate: <StarRating /></p>
                 </div>
             ) : (
 

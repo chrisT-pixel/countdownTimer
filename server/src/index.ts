@@ -1,15 +1,17 @@
 import express, {Express, json, urlencoded} from "express";
 import { EmailInbound, isEmailInbound } from "./models/mail";
 import { createEmailMessage, transporter } from "./utils/mail-util";
-import { getAppProperty } from "./utils/props";
+import { getServerProperty } from "./utils/props";
+import cors from "cors";
 
-const port = getAppProperty("server.port") as number;
+const port = getServerProperty("server.port") as number;
 
 const app: Express = express();
+app.use(cors());
 app.use(json());
 app.use(urlencoded({ extended: true }))
 
-app.post("/send-email", (req, res) => {
+app.post(getServerProperty("server.endpoint.sendemail") as string, (req, res) => {
     if (!isEmailInbound(req.body)) {
         res.status(400).end();
         console.log("Wrong format");

@@ -11,9 +11,23 @@ type Props = {
   noTasks: boolean;
   setImportedTasks: Dispatch<SetStateAction<Task[]>>;
   numOfTasks: number;
+  setExportMethod: Dispatch<SetStateAction<string>>;
+  exportMethod: string;
+  exportEmail: string;
+  setExportEmail: Dispatch<SetStateAction<string>>;
 };
 
-export const DialogBody: FC<Props> = ({ activeTab, clearImportedTasks, noTasks, setImportedTasks, numOfTasks }) => {
+export const DialogBody: FC<Props> = ({
+  activeTab,
+  clearImportedTasks,
+  noTasks,
+  setImportedTasks,
+  numOfTasks,
+  setExportMethod,
+  exportMethod,
+  exportEmail,
+  setExportEmail
+}) => {
   const tab: JSX.Element = (() => {
     if (activeTab === IMPORT_TAB) {
       return (
@@ -28,19 +42,15 @@ export const DialogBody: FC<Props> = ({ activeTab, clearImportedTasks, noTasks, 
       return (
         <ExportTab
           numOfTasks={numOfTasks}
+          setExportMethod={setExportMethod}
+          exportMethod={exportMethod}
+          exportEmail={exportEmail}
+          setExportEmail={setExportEmail}
         />
       );
     }
-    return (
-      <div>
-        Not supported.
-      </div>
-    );
+    return <div>Not supported.</div>;
   })();
 
-  return (
-    <div className="DialogBody_view">
-      {tab}
-    </div>
-  );
+  return <div className="DialogBody_view">{tab}</div>;
 };

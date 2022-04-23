@@ -16,7 +16,7 @@ const App: React.FC = () => {
   const [task, setTask] = useState<string>("");
   const [time, setTime] = useState<number>(0);
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [showDialog, setShowDialog] = useState<boolean>(true);
+  const [showDialog, setShowDialog] = useState<boolean>(false);
   const [isLargeText, setLargeText] = useState(false); 
   const [isLargeActive, setLargeActive] = useState(false); 
 

@@ -2,8 +2,9 @@ import React from 'react';
 import { FaTrashAlt, FaCheck, FaPlay, FaPause, FaPlus, FaForward } from 'react-icons/fa';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { Task } from '../models/Task';
-import StarRating from './Rating'
-
+import StarRating from './Rating';
+import useSound from "use-sound";
+import bleep from "../assets/bleep.mp3";
 
 type Props = {
     task: Task;
@@ -13,6 +14,8 @@ type Props = {
 
 const SingleTask = ({ task, tasks, setTasks}: Props) => {
 
+    // sets up call to sound hook
+    const [handleSound] = useSound(bleep, {volume: 0.3});
 
     const handlePause = (id: string) => {
        
@@ -49,34 +52,28 @@ const SingleTask = ({ task, tasks, setTasks}: Props) => {
 
     const handleDelete = (id: string) => {
         setTasks(tasks.filter((task)=>task.id != id));
-        
     };
 
     const handleActive = (id: string) => {
-
-       setTasks(
-            tasks => tasks.map(
-                task => {
-                    return {
-                    ...task,
-                    isActive: task.id === id,
-                    isCurrent: task.id === id
+        setTasks(
+             tasks => tasks.map(
+                 task => {
+                     return {
+                     ...task,
+                     isActive: task.id === id,
+                     isCurrent: task.id === id,
                     };
-                }
+                }   
             )
-
         );
-
-        
     };
 
-
-     const renderTime = ({ remainingTime }: {remainingTime: number}) => {
+    const renderTime = ({ remainingTime }: {remainingTime: number}) => {
         if (remainingTime === 0) {
-          return <div className="timer">Time up...</div>;
+        handleSound();
+            return <div className="timer">Time up...</div>;
         }
-         
-      
+           
         return (
       
                 <div className="timer">
@@ -84,20 +81,17 @@ const SingleTask = ({ task, tasks, setTasks}: Props) => {
                   <div className="value">{Math.floor(remainingTime / 60)} min</div>
                   <div className="value">{remainingTime - Math.floor(remainingTime / 60) * 60} sec</div>
                 </div>
-      
-      
+            
         );
       };
 
     const timerDuration = task.time * 60;
     const timerDurationTwoThird = task.time * 40;
     const timerDurationOneThird = task.time * 20;
-
     
     return(
        
-        <form className="todos__single">
-       
+        <form className="todos__single">       
             
             {task.isDone ? (
                 <div>
@@ -147,7 +141,9 @@ const SingleTask = ({ task, tasks, setTasks}: Props) => {
                 <div>
                     <span className="todos__single--text_alert">Press play to begin countdown.</span>
                 </div>
-            )}  
+            )
+            }
+            
            
             <div>
                

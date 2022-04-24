@@ -4,6 +4,8 @@
 - [Installation](#installation)
 - [Start the app](#start-the-app)
 - [Adding, deleting tasks](#adding-deleting-tasks)
+- [Pausing, extending, and advancing tasks](#pausing-extending-advancing-tasks)
+- [Audio cue for completed tasks](#audio-cue-for-completed-tasks)
 - [Ticking off and Rating tasks](#ticking-off-and-rating-tasks)
 - [Accessibility for vision impaired](#accessibility-for-vision-impaired)
 - [Import tasks](#import-tasks)
@@ -43,6 +45,14 @@ _To be able to export tasks via email:_
 Users can enter any number of tasks and allocate a time in minutes for each one via the form inputs. The system will not allow a user to create a task without a task title and time in minutes. When the 'play' icon is ticked the timer begins and displays how much time is remaining. If a user starts a new task while another is running, the system will auto-pause the running task so the user can return to it later.  Users can also destroy a task if it is no longer included in the agenda.
 
 ![Adding Tasks](img/tasks.png)
+
+## Pausing, extending and advancing tasks
+
+Once a task has been selected by a user as the current task by pressing the ‘play’ icon, a task will become the current task, and the timer will begin (or resume). Users can pause the progress of the current task by clicking the ‘pause’ icon (the ‘pause’ icon will be toggled with the ‘play’ button, depending on the state of the timer). Users can add 1 minute to the current timer by clicking the ‘plus’ icon, or advance (i.e. subtract from) the current timer by clicking the ‘fast-forward’ icon.
+
+## Audio cue for completed tasks
+
+When a current timer has reached 0, an audio cue will play a ‘ding’ sound to indicate the timers’ completion.
 
 ## Ticking off and Rating tasks
 

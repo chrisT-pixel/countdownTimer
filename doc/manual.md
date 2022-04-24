@@ -4,9 +4,12 @@
 - [Installation](#installation)
 - [Start the app](#start-the-app)
 - [Adding, deleting tasks](#adding-deleting-tasks)
-- [Ticking off & Rating tasks](#ticking-off-and-rating-tasks)
+- [Ticking off and Rating tasks](#ticking-off-and-rating-tasks)
 - [Accessibility for vision impaired](#accessibility-for-vision-impaired)
 - [Import tasks](#import-tasks)
+- [Export tasks](#export-tasks)
+    - [Download](#download)
+    - [Send via e-mail](#send-via-e-mail)
 
 
 ## System requerements
@@ -41,7 +44,7 @@ Users can enter any number of tasks and allocate a time in minutes for each one 
 
 ![Adding Tasks](img/tasks.png)
 
-## Ticking off & Rating tasks
+## Ticking off and Rating tasks
 
 A user can ‘tick-off’ a task by pressing the 'tick' icon and the system will prompt the user to rate the efficiency of the discussion of that particular task. This is achieved by hovering over the desired star rating and clicking.
 
@@ -64,8 +67,51 @@ File should have the following headers:
 Here you can find an [import file example](file-examples/import_example.csv).
 
 1. Click the _Import/Export_ button
+
 ![Import/Export button](img/import-export-button.png)
+
 2. Choose a file to import
+
 ![Choose file](img/import-tab-choose-file.png)
+
 3. Click the import button
+
 ![Import button](img/import-tab-import-button.png)
+
+## Export tasks
+
+A user can export tasks as a _CSV_ file. They can either download it or send via e-mail.
+
+**Navigate to the export tab:**
+
+1. Click the _Import/Export_ button
+
+![Import/Export button](img/import-export-button.png)
+
+2. Click _Export_
+
+![Export tab navigation](img/export-tab-navigation.png)
+
+Now user has an option either to _download_ tasks or _send them via email_.
+
+### Download
+
+_Download_ option is selected by default. Click the download button to complete the import.
+
+![Download export](img/export-download.png)
+
+### Send via e-mail
+
+This project sends emails via google account. Another SMTP service can be specified in `server/server.properties` file.
+
+1. Select _Send via E-mail_ option in the drop-down list
+
+![Choose send email option](img/choose-send-email-option.png)
+
+2. Enter the recipient's e-mail.
+
+![Enter email](img/recipient-email.png)
+
+3. Click the _E-mail_ button.
+
+![Clicke send](img/export-email-button.png)

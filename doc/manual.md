@@ -6,6 +6,7 @@
 - [Adding, deleting tasks](#adding-deleting-tasks)
 - [Ticking off & Rating tasks](#ticking-off-and-rating-tasks)
 - [Accessibility for vision impaired](#accessibility-for-vision-impaired)
+- [Import tasks](#import-tasks)
 
 
 ## System requerements
@@ -51,3 +52,20 @@ A user can ‘tick-off’ a task by pressing the 'tick' icon and the system will
 A user can toggle the font size of task information by clicking on the 'font size' button on the top right
 
 ![Large font](img/large-font.png)
+
+## Import tasks
+
+A user can import tasks from a _CSV_ file.
+File should have the following headers:
+
+- **task**
+- **time**
+
+Here you can find an [import file example](file-examples/import_example.csv).
+
+1. Click the _Import/Export_ button
+![Import/Export button](img/import-export-button.png)
+2. Choose a file to import
+![Choose file](img/import-tab-choose-file.png)
+3. Click the import button
+![Import button](img/import-tab-import-button.png)

@@ -4,7 +4,7 @@
 - [Installation](#installation)
 - [Start the app](#start-the-app)
 - [Adding, deleting tasks](#adding-deleting-tasks)
-- [Pausing, extending, and advancing tasks](#pausing-extending-advancing-tasks)
+- [Pausing, extending, and advancing tasks](#pausing-extending-and-advancing-tasks)
 - [Audio cue for completed tasks](#audio-cue-for-completed-tasks)
 - [Ticking off and Rating tasks](#ticking-off-and-rating-tasks)
 - [Accessibility for vision impaired](#accessibility-for-vision-impaired)
